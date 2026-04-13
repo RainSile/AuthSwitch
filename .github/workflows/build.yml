@@ -2,7 +2,7 @@ name: Build EXE
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -31,18 +31,18 @@ jobs:
         run: |
           jpackage `
             --input target/ `
-            --name YourApp `
-            --main-jar your-app-1.0.jar `
+            --name AuthSwitch `
+            --main-jar AuthSwitch-0.1.0.jar `
             --main-class com.example.MainApplication `
             --type exe `
             --dest output/ `
             --win-dir-chooser `
             --win-menu `
             --win-shortcut `
-            --app-version 1.0.0
+            --app-version 0.1.0
 
       - name: Upload EXE artifact
         uses: actions/upload-artifact@v3
         with:
-          name: YourApp-installer
+          name: AuthSwitch-installer
           path: output/*.exe
